@@ -46,6 +46,36 @@ a {
   color: inherit;
 }
 
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  top: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.25s ease-out;
+  height: 6rem;
+  width: 40rem;
+  font-size: 2rem;
+  color: var(--white-color);
+  border-radius: 10px;
+  border: 1px solid var(--white-color);
+}
+
+.success {
+  background: rgba(0, 128, 0, 0.8);
+}
+
+.error {
+  background: rgba(196, 52, 45, 0.8);
+}
+
+.noMessage {
+  display: none;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -141,10 +171,16 @@ a {
   justify-content: flex-start;
   gap: 1rem;
   padding-bottom: .5rem;
+  white-space: nowrap;
 }
 
 .active {
   border-bottom: 3px solid var(--light-gray-color);
+}
+
+.active2 {
+  font-weight: bold;
+  background: var(--gray-color);
 }
 
 .btn-mobile {
@@ -198,13 +234,14 @@ a {
 }
 
 .holder {
-  display: inherit;
-  flex-direction: inherit;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 5rem;
 
   height: auto;
   min-height: 100vh;
+  width: 90%;
   padding: 15rem 1rem 7rem;
 }
 
@@ -235,6 +272,151 @@ a {
 .post-label {
   width: 100%;
   padding: 1rem;
+}
+
+.login-holder {
+  width: 100%;
+}
+
+.login-holder form {
+  background: var(--black-color);
+  padding: 3.5rem 2rem;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.login-holder form label {
+  height: 3rem;
+  font-size: 1.8rem;
+}
+
+.login-holder form input {
+  height: 3.8rem;
+  font-size: 1.8rem;
+}
+
+.login-holder form section {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-holder form section a:hover {
+  text-decoration: underline;
+}
+
+.login-holder .btn-submit {
+  height: 5rem;
+  border-radius: 30px;
+  background: var(--gray-color);
+  color: var(--white-color);
+  font-size: 1.8rem;
+}
+
+.login-holder .btn-submit:hover {
+  background: var(--light-gray-color);
+  border-style: inset;
+  cursor: pointer;
+}
+
+.register-holder {
+  width: 100%;
+}
+
+.register-holder form {
+  background: var(--black-color);
+  padding: 3.5rem 2rem;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.register-holder form label {
+  height: 3rem;
+  font-size: 1.8rem;
+}
+
+.register-holder form input {
+  height: 3.8rem;
+  font-size: 1.8rem;
+  border-radius: 4px;
+}
+
+.register-holder form section {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-holder form section a:hover {
+  text-decoration: underline;
+}
+
+.register-holder .btn-submit {
+  height: 5rem;
+  border-radius: 30px;
+  background: var(--gray-color);
+  color: var(--white-color);
+  font-size: 1.8rem;
+}
+
+.register-holder .btn-submit:hover {
+  background: var(--light-gray-color);
+  border-style: inset;
+  cursor: pointer;
+}
+
+.register-holder .btn-green:hover {
+  background: rgba(0, 128, 0, 0.8);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.friends-holder {
+  width: 100%;
+  
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 18rem;
+  width: 15rem;
+  
+  border-radius: 10px;
+  background: var(--black-color);
+  -webkit-box-shadow: 0px 0px 13px -5px darkslategray; 
+  box-shadow: 0px 0px 13px -5px darkslategray;
+}
+
+.friend-profile-image {
+  height: 15rem;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.friend-card h3 {
+  margin: 0;
+  padding: 0;
+  height: 3rem;
+  width: 15rem;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
@@ -290,12 +472,12 @@ a {
 }
 
 @media screen and (min-width: 762px) {
-  .active {
-    border-bottom: 3px solid var(--light-gray-color);
+  .alert {
+    width: 60rem;
+    top: 60px;
   }
-
   .nav-mobile {
-    display: none;
+    display: none !important;
   }
   
   .navbar {
@@ -305,7 +487,7 @@ a {
   
     height: 8rem;
     width: 100vw;
-    padding: 0 35rem;
+    padding: 0 36rem 0 35rem;
   
     background: var(--dark-gray-color);
     /* border-bottom: 1px dashed #fff; */
@@ -333,7 +515,7 @@ a {
     gap: 1rem;
   }
 
-  #nav-settings {
+  .nav-settings {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -367,15 +549,55 @@ a {
   
   .nav-icons {
     height: 2.5rem;
-    width: 2.5rem;
-  }
-
-  .nav-mobile {
-    display: none !important;
+    width: 3.5rem;
+    padding-right: 1rem;
+    border-right: 1px solid #fff;
   }
   
   .btn-mobile {
     display: none;
+  }
+
+  .dropdown-arrow {
+    height: 2rem;
+    width: 2rem;
+    /* z-index: -1; */
+  }
+
+  .profile-dropdown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* .dropdown {
+    position: relative;
+    display: inline-block;
+  } */
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: #000;
+    border-radius: 3px;
+    top: calc(6.5rem - 3px);
+    right: 36rem;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+  .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .show {
+    display:block;
   }
   
   .main-content {
@@ -389,13 +611,14 @@ a {
   }
   
   .holder {
-    display: inherit;
-    flex-direction: inherit;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5rem;
   
     height: auto;
     min-height: 100vh;
+    width: 100%;
     padding: 15rem 20rem 7rem;
   
     -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 0px rgba(0,0,0,0); 
@@ -429,6 +652,168 @@ a {
   .post-label {
     width: 100%;
     padding: 1rem;
+  }
+
+  .login-holder {
+    width: 50%;
+  }
+
+  .login-holder form {
+    padding: 3.5rem 3rem;
+  }
+
+  .login-holder .buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .login-holder .btn-submit {
+    width: 90%;
+  }
+
+  .register-holder {
+    width: 100%;
+  }
+  
+  .register-holder form {
+    background: var(--black-color);
+    padding: 3.5rem 2rem;
+    border-radius: 30px;
+  
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  .register-holder form label {
+    height: 3rem;
+    font-size: 1.8rem;
+  }
+  
+  .register-holder form input {
+    height: 3.8rem;
+    font-size: 1.8rem;
+    border-radius: 4px;
+  }
+  
+  .register-holder form section {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+  }
+
+  #user-name {
+    width: calc(90% + 3rem);
+  }
+  
+  .register-holder form section a:hover {
+    text-decoration: underline;
+  }
+
+  .register-holder .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+  }
+  
+  .register-holder .btn-submit {
+    height: 6rem;
+    width: 45%;
+    font-size: 2.2rem;
+  }
+  
+  .register-holder .btn-submit:hover {
+    background: var(--light-gray-color);
+    border-style: inset;
+    cursor: pointer;
+  }
+
+  .register-holder .btn-green:hover {
+    background: rgba(0, 128, 0, 0.8);
+  }
+
+  .content-title {
+    font-size: 4.2rem;
+    margin: 0;
+  }
+
+  .search-bar {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .search-bar input {
+    width: calc(100% - 5rem);
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    background: var(--white-color);
+  }
+
+  .search-bar input:focus {
+    box-shadow: 0;
+    outline: 0;
+  }
+
+  .search-bar .btn-search {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--white-color);
+    border: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+  }
+
+  .search-icon {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+
+  .friends-holder {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+  
+  .friend-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    height: 28rem;
+    width: 25rem;
+    
+    border-radius: 10px;
+    background: var(--black-color);
+    -webkit-box-shadow: 0px 0px 13px -5px darkslategray; 
+    box-shadow: 0px 0px 13px -5px darkslategray;
+  }
+
+  .friend-profile-image {
+    height: 25rem;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .friend-card h3 {
+    margin: 0;
+    padding: 0;
+    height: 3rem;
+    width: 25rem;
+    text-align: center;
   }
   
   .footer {

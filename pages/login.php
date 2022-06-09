@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include_once "../php/verifyForValidUsers.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -8,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Tomorrow:wght@400;600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Amigos</title>
+    <title>Log in</title>
   </head>
   <body>
     <nav class="navbar" id="navbar">
@@ -16,22 +21,35 @@
         <a href="../index.html"><img src="../images/logomark.png" class="nav-logomark"/><span>Rede Social</span></a>
       </div>
       <ul class="nav-desktop">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="friends.html" class="active">Friends</a></li>
-        <li><a href="my-profile.html">Profile</a></li>
-        <li><a href="settings.html" id="nav-settings"><img src="../images/settings-white.svg" class="nav-icons"></a></li>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="login.php" class="active">Entrar</a></li>
       </ul>
       <button class="btn-mobile" id="btn-mobile"><span class="hamburguer"></span></button>
       <ul class="nav-mobile">
-        <li><a href="../index.html"><img src="../images/home.svg" class="nav-icons">Home</a></li>
-        <li><a href="friends.html" class="active"><img src="../images/friends.svg" class="nav-icons">Friends</a></li>
-        <li><a href="my-profile.html"><img src="../images/profile.svg" class="nav-icons">Profile</a></li>
-        <li><a href="settings.html"><img src="../images/settings-white.svg" class="nav-icons">Settings</a></li>
+        <li><a href="../index.html"><img src="../images/home.svg" class="nav-icons">Início</a></li>
+        <li><a href="login.php" class="active"><img src="../images/profile.svg" class="nav-icons">Entrar</a></li>
       </ul>
     </nav>
     <main class="main-content">
       <section class="holder">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent placerat risus nisl, id volutpat nisi maximus dignissim. Nulla ipsum magna, laoreet non feugiat ac, tincidunt vitae arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque sit amet scelerisque magna. Aenean ornare condimentum urna, bibendum lobortis eros molestie vel. Pellentesque non nibh semper, blandit felis sed, pellentesque est. Duis eleifend nibh odio, quis vehicula elit accumsan ac. Cras viverra nunc in ornare dignissim. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+        <h1>Entrar com sua conta</h1>
+        <section class="login-holder">
+          <form action="../php/logIntoMyAccount.php" method="POST">
+            <section>
+              <label for="username">Nome de usuário:</label>
+              <input type="text" name="username" id="username" placeholder="Ex: josedasilva" required>
+            </section>
+            <section>
+              <label for="password">Senha:</label>
+              <input type="password" name="password" id="password" placeholder="********" required>
+              <p>Esqueceu sua senha? <a href="forgot-password.php">Clique aqui</a></p>
+            </section>
+            <section class="buttons">
+              <button type="submit" class="btn-submit">Entrar</button>
+              <button type="button" onclick="window.location.href = 'register.php'" class="btn-submit">Não tenho conta</button>
+            </section>
+          </form>
+        </section>
       </section>
     </main>
     <footer class="footer">
@@ -45,6 +63,13 @@
         <p>Created and developed by <a href="https://instagram.com/pedroluca.dev">Pedro Luca Prates</a></p>
       </section>
     </footer>
-    <script src="../js/app.js"></script>
+    <div id="message">
+      <?php
+      echo $_SESSION['message'];
+      unset($_SESSION['message']);
+      ?>
+    </div>
+    <script src="../js/messageTimeOut.js"></script>
+    <script src="../js/toggleMobileNavbar.js"></script>
   </body>
 </html>

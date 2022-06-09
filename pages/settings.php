@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include_once "../php/logUserOut.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -16,17 +21,27 @@
         <a href="../index.html"><img src="../images/logomark.png" class="nav-logomark"/><span>Rede Social</span></a>
       </div>
       <ul class="nav-desktop">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="friends.html">Friends</a></li>
-        <li><a href="my-profile.html">Profile</a></li>
-        <li><a href="settings.html" class="active" id="nav-settings"><img src="../images/settings-white.svg" class="nav-icons"></a></li>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="friends.php">Amigos</a></li>
+        <li>
+          <a class="profile-dropdown" onclick="myFunction()">
+            <?php echo $_SESSION['username'] ?>
+            <img src="../images/down-arrow.svg" class="dropdown-arrow">
+          </a>
+        </li>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="my-profile.php"><img src="../images/profile.svg" class="nav-icons">Meu Perfil</a>
+          <a href="settings.php" class="active2"><img src="../images/settings.svg" class="nav-icons">Configurações</a>
+          <a href="?logout=1"><img src="../images/log-out.svg" class="nav-icons">Sair</a>
+        </div>
       </ul>
       <button class="btn-mobile" id="btn-mobile"><span class="hamburguer"></span></button>
       <ul class="nav-mobile">
-        <li><a href="../index.html"><img src="../images/home.svg" class="nav-icons">Home</a></li>
-        <li><a href="friends.html"><img src="../images/friends.svg" class="nav-icons">Friends</a></li>
-        <li><a href="my-profile.html"><img src="../images/profile.svg" class="nav-icons">Profile</a></li>
-        <li><a href="settings.html" class="active"><img src="../images/settings-white.svg" class="nav-icons">Settings</a></li>
+        <li><a href="../index.html"><img src="../images/home.svg" class="nav-icons">Início</a></li>
+        <li><a href="friends.php"><img src="../images/friends.svg" class="nav-icons">Amigos</a></li>
+        <li><a href="my-profile.php"><img src="../images/profile.svg" class="nav-icons">Meu Perfil</a></li>
+        <li><a href="settings.php" class="active"><img src="../images/settings.svg" class="nav-icons">Configurações</a></li>
+        <li><a href="?logout=1"><img src="../images/log-out.svg" class="nav-icons">Sair</a></li>
       </ul>
     </nav>
     <main class="main-content">
@@ -45,6 +60,15 @@
         <p>Created and developed by <a href="https://instagram.com/pedroluca.dev">Pedro Luca Prates</a></p>
       </section>
     </footer>
-    <script src="../js/app.js"></script>
+    <div id="message">
+      <?php
+      echo $_SESSION['message'];
+      unset($_SESSION['message']);
+      include_once "../php/verifyForInvalidUsers.php";
+      ?>
+    </div>
+    <script src="../js/messageTimeOut.js"></script>
+    <script src="../js/toggleMobileNavbar.js"></script>
+    <script src="../js/toggleProfileDropdownMenu.js"></script>
   </body>
 </html>
